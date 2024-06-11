@@ -22,3 +22,14 @@ generate-user-api:
 	--go-grpc_out=pkg/user_api_v1 --go-grpc_opt=paths=source_relative \
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
 	api/user_api_v1/user_api.proto
+
+build:
+	GOOS=linux GOARCH=amd64 go build -o bin/auth cmd/main.go
+
+copy-to-server:
+	scp bin/auth roxaneos@192.168.0.106:
+
+docker-build-and-push:
+	sudo docker buildx build --no-cache --platform linux/amd64 -t cr.selcloud.ru/azoma13/auth:v0.0.1 .
+	sudo docker login -u token -p CRgAAAAAs-ERMFmrzVTcfyeJ3SXirZbkbqqdMevj cr.selcloud.ru/azoma13
+	sudo docker push cr.selcloud.ru/azoma13/auth:v0.0.1
