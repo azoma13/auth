@@ -31,5 +31,5 @@ copy-to-server:
 
 docker-build-and-push:
 	sudo docker buildx build --no-cache --platform linux/amd64 -t cr.selcloud.ru/azoma13/auth:v0.0.1 .
-	sudo docker login -u token -p CRgAAAAAs-ERMFmrzVTcfyeJ3SXirZbkbqqdMevj cr.selcloud.ru/azoma13
+	sudo docker login -u token -p <pass> cr.selcloud.ru/azoma13
 	sudo docker push cr.selcloud.ru/azoma13/auth:v0.0.1
