@@ -25,7 +25,6 @@ func (s *server) Create(ctx context.Context, req *desc.CreateRequest) (*desc.Cre
 		Id: gofakeit.Int64(),
 	}, nil
 }
-
 func (s *server) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
 
 	return &desc.GetResponse{
